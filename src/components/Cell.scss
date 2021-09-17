@@ -1,0 +1,27 @@
+$cell-border-color:rgb(208, 190, 236);
+$cell-border-size: 4px;
+.cell{
+    width: 150px;
+    height: 150px;
+    font-size: 4rem;    
+    text-align: center;
+    vertical-align: middle;
+    line-height: 150px; 
+    cursor: pointer; 
+}
+
+.border-left{
+    border-left: solid $cell-border-color $cell-border-size;
+}
+
+.border-right{
+    border-right: solid $cell-border-color $cell-border-size;
+}
+
+.border-bottom{
+    border-bottom: solid $cell-border-color $cell-border-size;
+}
+
+.border-top{
+    border-top: solid $cell-border-color $cell-border-size;
+}
