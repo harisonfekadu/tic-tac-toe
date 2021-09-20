@@ -1,9 +1,29 @@
 .app-container{
   background-color: azure;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100vw;
   height: 100vh;
 }
+
+.main{
+  width: fit-content;
+  height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  margin-top: 50px;
+}
+
+.tool-bar{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+margin-bottom: 25px;
+}
+
+
 

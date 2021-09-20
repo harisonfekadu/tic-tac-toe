@@ -1,0 +1,21 @@
+.button, .defualt {
+  background-color: blue;
+  border-radius: 8px;
+  width: 70px;
+  height: 40px;
+  border: none;
+  color: white;
+}
+
+.button-secondary {
+    background-color: #d0beec ;
+    color: black;
+}
+
+.button-warning-outlined {
+    background-color: white ;
+    color: orange;
+    border: solid orange 1px;
+}
+
+

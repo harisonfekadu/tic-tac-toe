@@ -5,21 +5,23 @@ export type CellValue = "X" | "O" | " ";
 // export type Position = 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9;
 
 interface CellProps {
-  value: CellValue;
-  position: number;
+  cellValue: CellValue;
+  cellNumber: number;
+  handleClick: (cellNumber: number, playerMark: CellValue) => void;
+  playerMark: CellValue;
 }
-const Cell: React.FC<CellProps> = ({ position, value }) => {
+const Cell: React.FC<CellProps> = ({ cellNumber, cellValue, handleClick, playerMark }) => {
   const cellBorderClassNames = (): string => {
     let classNames: string = "";
-    if (position % 3 !== 0) {
+    if ((cellNumber+1) % 3 !== 0) {
       classNames += "border-right";
     }
-    if (position < 7) {
+    if ((cellNumber+1) < 7) {
       classNames += " border-bottom ";
     }
     return classNames;
   };
-  return <div className={`${cellBorderClassNames()} cell`}>{value}</div>;
+  return <div className={`${cellBorderClassNames()} cell`} onClick={(e)=>{handleClick(cellNumber, playerMark)}}>{cellValue}</div>;
 };
 
 export default Cell;

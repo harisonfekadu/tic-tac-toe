@@ -1,0 +1,21 @@
+.label{
+    font-size: 1rem;
+    margin-top: 25px;
+    width: 100%;
+    text-align: center;
+}
+
+.player-name-label{
+    color: rgb(148, 86, 247);
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.player-mark-label{
+    margin-right: 10px;
+    border: solid rgb(148, 86, 247) 1px;
+    color: rgb(148, 86, 247);
+    // background-color: white;
+    padding: 1px 7px 2.5px 7px;
+    border-radius: 8px;
+}
