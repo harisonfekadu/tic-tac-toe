@@ -1,14 +1,9 @@
 import React, { createContext, useContext, useState } from "react";
-
-type ThemeColor = "dark" | "light";
-type ThemeType = {
-  themeColor: ThemeColor;
-  toggleThemeColor: () => void;
-};
+import { ThemeType, ThemeColor } from "../types";
 
 const ThemeContext = createContext<ThemeType>({
   themeColor: "dark",
-  toggleThemeColor: ()=>{}
+  toggleThemeColor: ()=>null
 });
 
 export const useTheme: () => ThemeType = () => useContext<ThemeType>(ThemeContext);

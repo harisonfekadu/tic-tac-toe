@@ -1,0 +1,48 @@
+.button, .defualt {
+  background-color: blue;
+  border-radius: 8px;
+  width: 70px;
+  height: 40px;
+  border: none;
+  color: white;
+}
+
+.button-secondary {
+    background-color: #d0beec ;
+    color: black;
+}
+
+.button-plain{
+  background-color: transparent;
+  color: white
+}
+
+.button-icon{
+  position: relative;
+  top: 2px;
+}
+
+.button-circular{
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  transition-property: box-shadow background-color margin-top;
+  transition-duration: 0.25s;
+  transition-delay: 0s;
+}
+
+.button-circular:hover{
+  // border: solid 1px gray;
+  box-shadow:0px 2px 4px 0px black;
+  background-color: #37332F;
+  // margin-top: -3px;
+
+}
+
+.button-warning-outlined {
+    background-color: white ;
+    color: orange;
+    border: solid orange 1px;
+}
+
+

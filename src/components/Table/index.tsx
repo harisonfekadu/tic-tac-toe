@@ -1,31 +1,29 @@
 import React, { useEffect, useState } from "react";
-import Cell, { CellValue } from "./Cell";
-import "./Table.css";
+import { TurnType, CellValue, TableProps } from "../../types";
+import Cell from "../Cell";
+import "./style.scss";
 
-type TableProps = {
-  playerMark: CellValue;
-  toggleTurn: any;
-  historyIndex: number;
-  incrementHistoryIndex: () => void;
-  setWinner: ()=>void;
-};
+
 
 const Table: React.FC<TableProps> = ({
   playerMark,
   toggleTurn,
   historyIndex,
   incrementHistoryIndex,
-  setWinner
+  setWinner,
+  winner
 }) => {
   const [cellValueList, setCellValueList] = useState<CellValue[][] | [][]>([
     [],
   ]);
+  const [winningTuples, setWinningTuples] = useState<boolean[]>([]);
+
   useEffect(() => {
     setCellValueList([[" ", " ", " ", " ", " ", " ", " ", " ", " "]]);
   }, []);
 
   const handelClick = (cellNumber: number, playerMark: CellValue) => {
-    if (cellValueList[historyIndex][cellNumber] !== " ") {
+    if (cellValueList[historyIndex][cellNumber] !== " " || winner!==null) {
       return;
     }
     cellValueList[historyIndex + 1] = cellValueList[historyIndex].slice();
@@ -33,18 +31,24 @@ const Table: React.FC<TableProps> = ({
     setCellValueList(cellValueList);
     incrementHistoryIndex();
     const winningTuple = isWin(cellValueList[historyIndex + 1]);
-    if(winningTuple!==undefined){
+    if(winningTuple===true){
       setWinner();
     }
     toggleTurn();
   };
 
   const isWin = (cellValueList: CellValue[]) => {
-    const winningTuple:string|undefined = getIndicesOfCellValue(
+    const winningTupleString:string = getIndicesOfCellValue(
       cellValueList,
       playerMark
-    ).match(/123|456|789|147|258|369|159|357/g)?.pop();
-    return winningTuple;
+    ).match(/123|456|789|1\d*4\d*7|2\d*5\d*8|3\d*6\d*9|1\d*5\d*9|3\d*5\d*7/g)?.pop() || "";
+    let winningTupleArray:boolean[] = [];
+    for(let i=0; i<winningTupleString.length;i++){
+
+    winningTupleArray[Number.parseInt(winningTupleString.charAt(i))-1]=true;
+    }
+    setWinningTuples(winningTupleArray);
+    return winningTupleArray.some(tuple => tuple===true);
   };
 
   const getIndicesOfCellValue = (
@@ -57,17 +61,19 @@ const Table: React.FC<TableProps> = ({
         playerMarkIndices.push(i + 1);
       }
     }
+    console.log(playerMarkIndices.join(""))
     return playerMarkIndices.join("");
   };
 
   return (
-    <div className="table table-grid">
+    <div className="table table-grid table-dark">
       {cellValueList[historyIndex].map((cellValue, key) => (
         <Cell
           cellValue={cellValue}
           playerMark={playerMark}
           cellNumber={key}
           key={key}
+          winningCell={winningTuples[key]}
           handleClick={handelClick}
         />
       ))}

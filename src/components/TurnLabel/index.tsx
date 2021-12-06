@@ -1,10 +1,6 @@
 import React from "react";
-import "./TurnLabel.scss"
-
-type TurnLabelPropTypes = {
-  playerName: string;
-  playerMark: string;
-};
+import "./style.scss";
+import {TurnLabelPropTypes} from "../../types"
 
 const TurnLabel: React.FC<TurnLabelPropTypes> = ({playerName, playerMark}) => {
   return <div className="label">
